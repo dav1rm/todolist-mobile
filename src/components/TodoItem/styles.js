@@ -8,20 +8,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: "#ededed",
     paddingVertical: 10,
-    paddingHorizontal: 5
+    paddingHorizontal: 5,
+    flexWrap: "wrap"
   },
   textContent: {
     color: "#4d4d4d",
     fontSize: 18
-  },
-  viewContent: {
-    flexDirection: "row",
-    alignItems: "center"
-  },
-  formContent: {
-    flexDirection: "row",
-    alignItems: "center",
-    flex: 1
   },
   button: {
     margin: 5,

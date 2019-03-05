@@ -28,37 +28,36 @@ export default class TodoItem extends Component {
     return (
       <View style={styles.todoItem}>
         {edit ? (
-          <View style={styles.formContent}>
-            <TextInput
-              style={styles.input}
-              onChangeText={this.handleInputChange}
-              value={this.state.content}
-              onSubmitEditing={this.handleEdit}
-              returnKeyType="send"
-            />
-            <TouchableOpacity style={styles.button} onPress={this.handleEdit}>
-              <Text style={styles.textButton}>Save</Text>
-            </TouchableOpacity>
-          </View>
+          <TextInput
+            style={styles.input}
+            onChangeText={this.handleInputChange}
+            value={this.state.content}
+            onSubmitEditing={this.handleEdit}
+            returnKeyType="send"
+          />
         ) : (
-          <View style={styles.viewContent}>
-            <Text
-              style={[styles.textContent, todo.done ? styles.done : ""]}
-              onLongPress={() =>
-                this.setState({ edit: true, content: todo.content })
-              }
-            >
-              {todo.content}
+          <Text
+            style={[styles.textContent, todo.done ? styles.done : ""]}
+            onLongPress={() =>
+              this.setState({ edit: true, content: todo.content })
+            }
+          >
+            {todo.content}
+          </Text>
+        )}
+        {edit ? (
+          <TouchableOpacity style={styles.button} onPress={this.handleEdit}>
+            <Text style={styles.textButton}>Save</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => handleUpdateTodo(todo, { done: !todo.done })}
+          >
+            <Text style={styles.textButton}>
+              {todo.done ? "Undone" : "Done"}
             </Text>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => handleUpdateTodo(todo, { done: !todo.done })}
-            >
-              <Text style={styles.textButton}>
-                {todo.done ? "Undone" : "Done"}
-              </Text>
-            </TouchableOpacity>
-          </View>
+          </TouchableOpacity>
         )}
         <TouchableOpacity
           style={styles.button}
